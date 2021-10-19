@@ -24,23 +24,23 @@ $(document).ready(function () {
                 responsive: true,
                 "ajax": {
     
-                    "url": "/api/ListIntunePolicy?type=ESP&Tenantfilter=" + TenantID,
+                    "url": "/api/ListMailboxStatistics?Tenantfilter=" + TenantID,
                     "dataSrc": "",
                 },
                 dom: 'fBlrtip',
                 buttons: [
                     { extend: 'copyHtml5', className: 'btn btn-primary btn-sm' },
-                    { extend: 'excelHtml5', className: 'btn btn-primary btn-sm', title: 'Intune Policy List - ' + TenantID + " - " + todayDate, exportOptions: {columns: [ 0,1 ]}   },
-                    { extend: 'csvHtml5', className: 'btn btn-primary btn-sm', title: 'Intune Policy List - ' + TenantID + " - " + todayDate, exportOptions: {columns: [ 0,1 ]}  },
-                    { extend: 'pdfHtml5', className: 'btn btn-primary btn-sm', orientation: 'landscape', title: 'Intune Policy List - ' + TenantID + " - " + todayDate, exportOptions: {columns: [ 0,1 ]} },
+                    { extend: 'excelHtml5', className: 'btn btn-primary btn-sm', title: 'Mailbox Statistics - ' + TenantID + " - " + todayDate  },
+                    { extend: 'csvHtml5', className: 'btn btn-primary btn-sm', title: 'Mailbox Statistics - ' + TenantID + " - " + todayDate },
+                    { extend: 'pdfHtml5', className: 'btn btn-primary btn-sm', orientation: 'landscape', title: 'Mailbox Statistics - ' + TenantID + " - " + todayDate },
                 ],
                 "columns": [
+                    { "data": "UPN" },
                     { "data": "displayName" },
-                    { "data": "PolicyTypeName" },
-                    {
-                        "data": "id",
-                        render: function (id, type, row) { return '<a href=index.html?page=EditPolicy&Config&ID=' + id + '&Tenantfilter=' + TenantID + '><i class="fas fa-cog fa-fw"></i></a>'; }
-                    }
+                    { "data": "LastActive" },                
+                    { "data": "UsedGB" },
+                    { "data": "ItemCount" },
+                    { "data": "HasArchive" },
                 ],
                 "order": [[0, "asc"]],
             }
